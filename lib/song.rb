@@ -20,7 +20,7 @@ class Song
     @@songs
   end
 
-extend Memorable
+extend Memorable::ClassMethods
 
 #  def self.reset_all
  #   self.all.clear

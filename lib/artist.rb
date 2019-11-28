@@ -4,6 +4,11 @@ class Artist
   attr_accessor :name
   attr_reader :songs
   
+ extend Memorable::ClassMethods
+  extend Findable::ClassMethods
+  include Memorable::InstanceMethods
+  include Paramable::InstanceMethods
+
 
   @@artists = []
 
@@ -12,17 +17,11 @@ class Artist
     @songs = []
   end
   
-  extend Findable
-  
 
   def self.all
     @@artists
   end
   
-  extend Memorable::ClassMethods
-
-  
-
   def add_song(song)
     @songs << song
     song.artist = self
@@ -32,5 +31,5 @@ class Artist
     songs.each { |song| add_song(song) }
   end
 
-  include Paramable
+  
 end
